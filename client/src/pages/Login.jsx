@@ -1,20 +1,30 @@
 import React from 'react'
 import {User2Icon,Lock,Mail} from 'lucide-react'
+import { useDispatch } from 'react-redux'
+import { login } from '../app/features/authSlice'
 
 const Login = () => {
   const query = new URLSearchParams(window.location.search)
   const urlState = query.get('state')
   const [state, setState] = React.useState(urlState || "login")
   
+  const dispatch = useDispatch()
     const [formData, setFormData] = React.useState({
         name: '',
         email: '',
         password: ''
     })
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const { data } = await api.post(`api/users/${state}`,formData);
+            dispatch(login(data));
+            localStorage.setItem('token',data.token)
+            console.log(data);
+        } catch (error) {
+            console.log(error.response?.data?.message);
+        }
     }
 
     const handleChange = (e) => {
