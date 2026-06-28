@@ -2,6 +2,9 @@ import React from 'react'
 import {User2Icon,Lock,Mail} from 'lucide-react'
 import { useDispatch } from 'react-redux'
 import { login } from '../app/features/authSlice'
+import api from '../configs/api.js'
+import toast from 'react-hot-toast'
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const query = new URLSearchParams(window.location.search)
@@ -9,6 +12,7 @@ const Login = () => {
   const [state, setState] = React.useState(urlState || "login")
   
   const dispatch = useDispatch()
+  const navigate = useNavigate()
     const [formData, setFormData] = React.useState({
         name: '',
         email: '',
@@ -18,12 +22,14 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await api.post(`api/users/${state}`,formData);
+            const { data } = await api.post(`/api/users/${state}`,formData);
             dispatch(login(data));
             localStorage.setItem('token',data.token)
+            toast.success(data.message)
             console.log(data);
+            navigate("/app");
         } catch (error) {
-            console.log(error.response?.data?.message);
+            toast.error(error.response?.data?.message || error.message);
         }
     }
 
@@ -60,7 +66,7 @@ const Login = () => {
             </div>
 
             <div className="mt-4 text-left">
-                <button className="text-sm text-indigo-400 hover:underline">
+                <button type="button" className="text-sm text-indigo-400 hover:underline">
                     Forget password?
                 </button>
             </div>

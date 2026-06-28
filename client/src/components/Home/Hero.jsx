@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import {Sparkles} from 'lucide-react';
+import { useSelector } from 'react-redux';
 
 const Hero = () => {
+    const {user}=useSelector(state=>state.auth)
     const [mobileOpen, setMobileOpen] = React.useState(false);
     return (
         <>
@@ -26,10 +28,13 @@ const Hero = () => {
                             </button>
                         </div>
                         <div className='hidden md:flex items-center gap-4 md:gap-6 text-sm'>
-                            <Link to='/login?state=register' className='text-zinc-800 px-4 py-2.5 rounded-lg hover:bg-zinc-100 cursor-pointer'>Register</Link>
-                            <Link to='/login?state=login' className="hidden md:flex items-center gap-2 bg-zinc-900 hover:bg-zinc-800 text-white px-4 py-2.5 rounded-lg text-sm transition cursor-pointer group">
+                            <Link to='/login?state=register' className='text-zinc-800 px-4 py-2.5 rounded-lg hover:bg-zinc-100 cursor-pointer' hidden={user}>Register</Link>
+                            <Link to='/login?state=login' className="hidden md:flex items-center gap-2 bg-zinc-900 hover:bg-zinc-800 text-white px-4 py-2.5 rounded-lg text-sm transition cursor-pointer group" hidden={user}>
                                 Login
                                 <svg className="transition-transform duration-200 group-hover:translate-x-1" width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.495 5.651a.7.7 0 0 0 0-.99L9.04.207a.7.7 0 0 0-.99.99l3.96 3.96-3.96 3.959a.7.7 0 0 0 .99.99zM0 5.156v.7h13v-1.4H0z" fill="#fff" /></svg>
+                            </Link>
+                            <Link to='/app' className="hidden md:block bg-zinc-500 hover:bg-zinc-700 text-white px-8 py-2 active:scale-95 transition-all rounded-full" hidden={!user}>
+                                Dashboard
                             </Link>
                         </div>
 
