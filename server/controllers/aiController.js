@@ -99,7 +99,7 @@ export const uploadResume=async(req,res)=>{
                     },
                 ]},
                 `,
-            response_format:{type:'json_object'}
+            
         });
 
         const extractedData=response.output_text;
