@@ -22,49 +22,59 @@ const Features = () => {
         Everything You Need to Build a Winning Resume
       </h1>
       <p className="text-sm text-slate-500 text-center mt-2 max-w-md mx-auto">
-        Create ATS-friendly resumes, customize professional templates, and get AI-powered suggestions to help you stand out and land more interviews.
+        Create ATS friendly resumes, customize professional templates, and get AI powered suggestions to help you stand out and land more interviews.
       </p>
 
-      <div className="flex flex-wrap items-center justify-center gap-10 mt-16">
-        <div className="max-w-80 hover:-translate-y-0.5 transition duration-300">
+      <div className="flex flex-wrap items-center justify-center gap-12 mt-16">
+
+        <div className="max-w-150 hover:-translate-y-1 transition duration-300 rounded-3xl shadow-lg hover:shadow-2xl p-4 ">
+          <div className="bg-slate-600 rounded-2xl p-0.5">
           <img
-            className="rounded-xl"
-            src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/features/image-1.png"
+            className="rounded-xl h-64 object-cover"
+            src="/AI_Enhance.png"
             alt=""
           />
+          </div>
           <h3 className="text-base font-semibold text-slate-700 mt-4">
-            Feedback analyser
+            AI Resume Generation
           </h3>
           <p className="text-sm text-slate-600 mt-1">
-            Get instant insights into your finances with live dashboards.
+            Create professional resumes in minutes with AI suggestions.
           </p>
         </div>
-        <div className="max-w-80 hover:-translate-y-0.5 transition duration-300">
+
+        <div className="max-w-80 hover:-translate-y-1 transition duration-300 rounded-3xl shadow-lg hover:shadow-2xl p-4">
+          <div className="bg-slate-600 rounded-2xl p-0.5">
           <img
-            className="rounded-xl"
-            src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/features/image-2.png"
+            className="rounded-xl h-64 object-cover"
+            src="/Upload.png"
             alt=""
           />
+          </div>
           <h3 className="text-base font-semibold text-slate-700 mt-4">
-            User management
+            Smart Resume Parsing
           </h3>
           <p className="text-sm text-slate-600 mt-1">
-            Get instant insights into your finances with live dashboards.
+            Upload your existing resume and automatically extract your information.
           </p>
         </div>
-        <div className="max-w-80 hover:-translate-y-0.5 transition duration-300">
+
+        <div className="max-w-80 hover:-translate-y-1 transition duration-300 rounded-3xl shadow-lg hover:shadow-2xl p-4">
+          <div className="bg-slate-600 rounded-2xl p-0.5 overflow-hidden">
           <img
-            className="rounded-xl"
-            src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/features/image-3.png"
+            className="w-full h-64 object-cover rounded-xl"
+            src="/templates.png"
             alt=""
           />
+          </div>
           <h3 className="text-base font-semibold text-slate-700 mt-4">
-            Better invoicing
+            Multiple ATS Friendly Templates
           </h3>
           <p className="text-sm text-slate-600 mt-1">
-            Get instant insights into your finances with live dashboards.
+            Choose from elegant, recruiter friendly templates and customize them instantly.
           </p>
         </div>
+
       </div>
     </div>
   );

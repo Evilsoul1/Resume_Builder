@@ -10,7 +10,7 @@ const Hero = () => {
         <>
             <header className='flex flex-col items-center bg-[#FAFAFA] text-black pb-12'>
 
-                <nav className="flex flex-col items-center w-full" >
+                <nav className="flex flex-col items-center w-full" >        
                     <div className="flex items-center justify-between p-4 md:px-16 lg:px-24 xl:px-32 md:py-4 w-full">
                         <a href="#">
                             <img src="logo.svg" alt="logo not found" className='h-11 w-auto'/>
@@ -18,8 +18,24 @@ const Hero = () => {
                         <div id="menu" className={`${mobileOpen ? 'max-md:w-full' : 'max-md:w-0'} max-md:fixed max-md:top-0 max-md:z-50 max-md:left-0 max-md:transition-all max-md:duration-300 max-md:overflow-hidden max-md:h-screen max-md:bg-white/25 max-md:backdrop-blur max-md:flex-col max-md:justify-center flex items-center gap-8 text-sm ml-auto md:ml-8 lg:ml-16 xl:ml-24`}>
                             <a href="#" onClick={() => setMobileOpen(false)} className="text-zinc-800 hover:text-zinc-950">Home</a>
                             <a href="#features" onClick={() => setMobileOpen(false)} className="text-zinc-800 hover:text-zinc-950">Features</a>
-                            <a href="#testimonials" onClick={() => setMobileOpen(false)} className="text-zinc-800 hover:text-zinc-950">Testimonial</a>
-                            <a href="#contact" onClick={() => setMobileOpen(false)} className="text-zinc-800 hover:text-zinc-950">Contact</a>
+                            <a href="#testimonials" onClick={() => setMobileOpen(false)} className="text-zinc-800 hover:text-zinc-950">Public Resumes</a>
+                            <a href="mailto:arya14728@example.com" onClick={() => setMobileOpen(false)} className="text-zinc-800 hover:text-zinc-950">Contact</a>
+                            
+                            <div className='md:hidden flex flex-col items-center gap-4'>
+                                {!user && (<>
+                                    <Link to='/login?state=register' onClick={() => setMobileOpen(false)} className='text-zinc-800 px-4 py-2.5 rounded-lg hover:bg-zinc-100 cursor-pointer' hidden={user}>Register</Link>
+                                    <Link to='/login?state=login' onClick={() => setMobileOpen(false)} className="flex items-center gap-2 bg-zinc-900 hover:bg-zinc-800 text-white px-4 py-2.5 rounded-lg text-sm transition cursor-pointer group" hidden={user}>
+                                        Login
+                                        <svg className="transition-transform duration-200 group-hover:translate-x-1" width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.495 5.651a.7.7 0 0 0 0-.99L9.04.207a.7.7 0 0 0-.99.99l3.96 3.96-3.96 3.959a.7.7 0 0 0 .99.99zM0 5.156v.7h13v-1.4H0z" fill="#fff" /></svg>
+                                    </Link>
+                                </>)}
+
+                                {user && (<>
+                                    <Link to='/app' onClick={() => setMobileOpen(false)} className="block bg-blue-500 hover:bg-blue-700 text-white px-8 py-2 active:scale-95 transition-all rounded-full">
+                                        Dashboard
+                                    </Link>
+                                </>)}
+                            </div>
 
                             <button id="close-menu" onClick={() => setMobileOpen(false)} className="md:hidden bg-zinc-900 hover:bg-zinc-800 text-white p-2 rounded-md aspect-square font-medium transition">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -27,13 +43,14 @@ const Hero = () => {
                                 </svg>
                             </button>
                         </div>
+
                         <div className='hidden md:flex items-center gap-4 md:gap-6 text-sm'>
                             <Link to='/login?state=register' className='text-zinc-800 px-4 py-2.5 rounded-lg hover:bg-zinc-100 cursor-pointer' hidden={user}>Register</Link>
                             <Link to='/login?state=login' className="hidden md:flex items-center gap-2 bg-zinc-900 hover:bg-zinc-800 text-white px-4 py-2.5 rounded-lg text-sm transition cursor-pointer group" hidden={user}>
                                 Login
                                 <svg className="transition-transform duration-200 group-hover:translate-x-1" width="14" height="11" viewBox="0 0 14 11" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.495 5.651a.7.7 0 0 0 0-.99L9.04.207a.7.7 0 0 0-.99.99l3.96 3.96-3.96 3.959a.7.7 0 0 0 .99.99zM0 5.156v.7h13v-1.4H0z" fill="#fff" /></svg>
                             </Link>
-                            <Link to='/app' className="hidden md:block bg-zinc-500 hover:bg-zinc-700 text-white px-8 py-2 active:scale-95 transition-all rounded-full" hidden={!user}>
+                            <Link to='/app' className="hidden md:block bg-blue-500 hover:bg-blue-700 text-white px-8 py-2 active:scale-95 transition-all rounded-full" hidden={!user}>
                                 Dashboard
                             </Link>
                         </div>
